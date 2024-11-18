@@ -74,7 +74,7 @@ bool Fixed::operator>(const Fixed &numObj)
 
 bool Fixed::operator<(const Fixed &numObj)
 {
-	return(fixedNum > numObj.fixedNum);
+	return(fixedNum < numObj.fixedNum);
 }
 
 bool Fixed::operator>=(const Fixed &numObj)
@@ -87,26 +87,91 @@ bool Fixed::operator<=(const Fixed &numObj)
 	return (fixedNum <= numObj.fixedNum);
 }
 
+bool Fixed::operator==(const Fixed &numObj)
+{
+	return (fixedNum == numObj.fixedNum);
+}
+
 bool Fixed::operator!=(const Fixed &numObj)
 {
-	return (fixedNum <= numObj.fixedNum);
-}
-int Fixed::operator+(const Fixed &numObj)
-{
-	return (fixedNum + numObj.fixedNum);
+	return (fixedNum != numObj.fixedNum);
 }
 
-int Fixed::operator-(const Fixed &numObj)
+Fixed Fixed::operator+(const Fixed &numObj)
 {
-	return (fixedNum - numObj.fixedNum);
+	return (this->toFloat() + numObj.toFloat());
 }
 
-int Fixed::operator*(const Fixed &numObj)
+Fixed Fixed::operator-(const Fixed &numObj)
 {
-	return (fixedNum * numObj.fixedNum);
+	return (this->toFloat() - numObj.toFloat());
+}
+Fixed Fixed::operator*(const Fixed &numObj)
+{
+	return (this->toFloat() * numObj.toFloat());
 }
 
-int Fixed::operator/(const Fixed &numObj)
+Fixed Fixed::operator/(const Fixed &numObj)
 {
-	return (fixedNum / numObj.fixedNum);
+	return (this->toFloat() / numObj.toFloat());
+}
+
+Fixed Fixed::operator++()
+{
+	fixedNum++;
+    return *this;
+}
+
+Fixed Fixed::operator++(int)
+{
+	Fixed tmp = *this;
+	fixedNum++;
+	return (tmp);
+}
+
+Fixed Fixed::operator--()
+{
+	fixedNum--;
+    return *this;
+}
+
+Fixed Fixed::operator--(int)
+{
+	Fixed tmp = *this;
+	fixedNum--;
+	return (tmp);
+}
+
+Fixed& Fixed::min(Fixed &fixedNumOne, Fixed &fixedNumTwo)
+{
+	if (fixedNumOne < fixedNumTwo)
+	{
+		return (fixedNumOne);
+	}
+		return (fixedNumTwo);
+}
+const Fixed& Fixed::min(const Fixed& objOne, const Fixed& objTwo)
+{
+	if (objOne.getRawBits() < objTwo.getRawBits())
+	{
+		return (objOne);
+	}
+		return (objTwo);
+}
+
+Fixed& Fixed::max(Fixed &fixedNumOne, Fixed &fixedNumTwo)
+{
+	if (fixedNumOne.getRawBits() > fixedNumTwo.getRawBits())
+	{
+		return (fixedNumOne);
+	}
+		return (fixedNumTwo);
+}
+Fixed const& Fixed::max(Fixed const &fixedNumOne, Fixed const &fixedNumTwo)
+{
+	if (fixedNumOne.getRawBits() > fixedNumTwo.getRawBits())
+	{
+		return (fixedNumOne);
+	}
+		return (fixedNumTwo);
 }

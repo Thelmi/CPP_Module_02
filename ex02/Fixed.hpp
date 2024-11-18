@@ -22,12 +22,21 @@ class Fixed
 		bool operator>(const Fixed &numObj);
 		bool operator<(const Fixed &numObj);
 		bool operator>=(const Fixed &numObj);
-		bool operator<=(const Fixed &numObj);
 		bool operator!=(const Fixed &numObj);
-		int operator+(const Fixed &numObj);
-		int operator-(const Fixed &numObj);
-		int operator*(const Fixed &numObj);
-		int operator/(const Fixed &numObj);
+		bool operator<=(const Fixed &numObj);
+		bool operator==(const Fixed &numObj);
+		Fixed operator+(const Fixed &numObj);
+		Fixed operator-(const Fixed &numObj);
+		Fixed operator*(const Fixed &numObj);
+		Fixed operator/(const Fixed &numObj);
+		Fixed operator++(int postIncrement);
+		Fixed operator++();
+		Fixed operator--(int postDecrement);
+		Fixed operator--();
+		static Fixed& min(Fixed &fixedNumOne, Fixed &fixedNumTwo);
+		static const Fixed& min(Fixed const &objOne, Fixed const &objTwo);
+		static Fixed& max(Fixed &fixedNumOne, Fixed &fixedNumTwo);
+		static const Fixed& max(Fixed const &fixedNumOne, Fixed const &fixedNumTwo);
 };
 
 std::ostream& operator<<(std::ostream& os, const Fixed &obj);
