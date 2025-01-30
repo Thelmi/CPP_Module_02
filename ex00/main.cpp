@@ -3,7 +3,7 @@ int main( void )
 {
 	Fixed a;
 	Fixed b( a );
-	Fixed c;
+	Fixed c = b;
 	c = b;
 	std::cout << a.getRawBits() << std::endl;
 	std::cout << b.getRawBits() << std::endl;

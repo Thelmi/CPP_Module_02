@@ -1,4 +1,4 @@
-NAME = Fixed
+NAME = operators
 
 SRC = main.cpp Fixed.cpp
 
